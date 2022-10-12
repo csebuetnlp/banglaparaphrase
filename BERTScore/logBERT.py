@@ -88,7 +88,7 @@ if __name__ == '__main__':
     parser.add_argument('--t',
                         metavar='t',
                         type=str,
-                        help='the path to the generated target file')
+                        help='the path to the generated log file')
 
 
     # Execute the parse_args() method

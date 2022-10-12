@@ -49,22 +49,17 @@ if __name__ == '__main__':
     threshold1 = args.l
     threshold2 = args.u
 
-    # filtering code
-    # threshold1 = 0.91
-    # threshold2 = 0.98
+
     linecount = 0
     sourcebuffer = ""
     targetbuffer = ""
     banglabertfilteredcount = 0
 
-    modified_source_path = source_path + "source_PINC_0.76_BBERT_"+ str(threshold1) + "-" +  str(threshold2) + ".bn"
-    modified_target_path = target_path + "target_PINC_0.76_BBERT_"+ str(threshold1) + "-" +  str(threshold2) + ".bn"
-
     banglabertfile = jsonlines.open(banglabert_path)
     sourcefile = open(
-        modified_source_path, 'w', encoding='utf-8')
+        source_path, 'w', encoding='utf-8')
     targetfile = open(
-        modified_target_path, 'w', encoding='utf-8')
+        target_path, 'w', encoding='utf-8')
 
     for line in banglabertfile.iter():
         srcbangla = ""
