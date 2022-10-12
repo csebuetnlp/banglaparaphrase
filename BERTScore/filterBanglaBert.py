@@ -8,21 +8,20 @@ import argparse
 if __name__ == '__main__':
 
     # Create the parser
-    parser = argparse.ArgumentParser(description='path to jsonL file, output source and output target')
+    parser = argparse.ArgumentParser(
+        description='path to jsonl log file, output source and output target and the lower and upper limit of BertScore')
 
     # Add the arguments
     parser.add_argument('--j',
                         metavar='jl',
                         type=str,
-                        help='the path to the jsonl file')
+                        help='the path to the jsonl log file')
 
-        
     parser.add_argument('--s',
                         metavar='t',
                         type=str,
                         help='the path to the generated source file')
 
-        
     parser.add_argument('--t',
                         metavar='t',
                         type=str,
@@ -38,8 +37,6 @@ if __name__ == '__main__':
                         type=float,
                         help='the upper limit of bbertscore')
 
-
-
     # Execute the parse_args() method
     args = parser.parse_args()
 
@@ -48,7 +45,6 @@ if __name__ == '__main__':
     target_path = args.t
     threshold1 = args.l
     threshold2 = args.u
-
 
     linecount = 0
     sourcebuffer = ""

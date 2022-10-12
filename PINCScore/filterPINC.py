@@ -28,15 +28,23 @@ def stem_string(string):
     return ' '.join([stemmer.stem_word(word) for word in words])
 
 
-def filter_dataset():
+def filter_dataset(jsonl_file, target_file, pinc_threshold):
+    """
+    filters the jsonl file with the given pinc threshold and writes the parallel
+    sentences to the target file
+
+    Args:
+        jsonl_file (file object) : file to be read and filtered
+        target_file (file object) : file to be written to
+        pinc_threshold (float): pinc threshold value
+    Returns:
+        None
+    """
 
     N = 4
-    PINC_THRESHOLD = 0.76
     linecount = 0
 
-    print(f'Using {PINC_THRESHOLD} threshold')
-
-    for line in f.iter():
+    for line in jsonl_file.iter():
         linecount += 1
         hasfound = False
         trgts = {}
@@ -69,45 +77,50 @@ def filter_dataset():
                         pinc_sum += (1 - (overlap_count / value_ngram_size))
                 pinc_sum = pinc_sum / N
 
-                if pinc_sum >= PINC_THRESHOLD:
+                if pinc_sum >= pinc_threshold:
                     hasfound = True
                     trgts[original_key].append(values[value_index])
         if hasfound:
-            json.dump(trgts, target, ensure_ascii=False)
-            target.write("%s" % '\n')
+            json.dump(trgts, target_file, ensure_ascii=False)
+            target_file.write("%s" % '\n')
             if linecount % 10000 == 0:
                 print(linecount)
-
 
 
 if __name__ == '__main__':
 
     # Create the parser
     parser = argparse.ArgumentParser(
-        description='path to the input and output file')
+        description='path to the input and output file and the pinc score threshold')
 
     # Add the arguments
     parser.add_argument('--l',
                         metavar='l',
                         type=str,
-                        help='the path to the jsonl file with sources and corresponding predictions')
+                        help='the path to the jsonl file with sources and corresponding paraphrases')
 
     parser.add_argument('--t',
                         metavar='t',
                         type=str,
                         help='the path to the generated target jsonl file')
 
+    parser.add_argument('--p',
+                        metavar='p',
+                        type=float,
+                        help='the desired pinc score threshold (0 - 1)')
+
     # Execute the parse_args() method
     args = parser.parse_args()
 
     jsonl_path = args.l
     target_path = args.t
+    pinc_threshold = args.p
 
-    target = open(target_path, 'w', encoding='utf-8')
-    f = jsonlines.open(jsonl_path)
+    target_file = open(target_path, 'w', encoding='utf-8')
+    jsonl_file = jsonlines.open(jsonl_path)
 
-    filter_dataset()
+    filter_dataset(jsonl_file, target_file, pinc_threshold)
 
     # closing all the files
-    target.close()
-    f.close()
+    target_file.close()
+    jsonl_file.close()

@@ -28,51 +28,59 @@ def stem_string(string):
     return ' '.join([stemmer.stem_word(word) for word in words])
 
 
-def calculateScore():
+def calculateScore(sourcefile, predictionfile):
+    """
+    returns a stemmed string without punctuations
+
+    Args:
+        sourcefile (file object) : the source file
+        predictionfile (file object) : the prediction file
+    Returns:
+        None
+    """
     N = 4
-    datacount=0
-    totalPINC=0
+    datacount = 0
+    totalPINC = 0
     for source in sourcefile:
-        prediction=predictionfile.readline()
-        datacount+=1
-        source=stem_string(source)
-        prediction=stem_string(prediction)
-        pinc_sum=0
+        prediction = predictionfile.readline()
+        datacount += 1
+        source = stem_string(source)
+        prediction = stem_string(prediction)
+        pinc_sum = 0
         for i in range(N):
             overlap_count = 0
             key_n_grams = list(ngrams(source.split(), i + 1))
             value_n_gram = list(ngrams(prediction.split(), i + 1))
-            value_ngram_size = len(value_n_gram) 
+            value_ngram_size = len(value_n_gram)
             for key_i in range(len(key_n_grams)):
                 for value_i in range(len(value_n_gram)):
                     if key_n_grams[key_i] == value_n_gram[value_i]:
                         overlap_count += 1  # increasing overlap count
-                        value_n_gram.pop(value_i)  # removing the exact n gram after calculating overlap
+                        # removing the exact n gram after calculating overlap
+                        value_n_gram.pop(value_i)
                         break
 
             # calculating the pinc sum
-            if value_ngram_size>0:
+            if value_ngram_size > 0:
                 pinc_sum += (1 - (overlap_count / value_ngram_size))
         pinc_sum = pinc_sum / N
-        totalPINC+=pinc_sum
-    PINCscore=totalPINC/datacount
-    print("Average PINC Score : ",PINCscore)
-                
-        
-                    
+        totalPINC += pinc_sum
+    PINCscore = totalPINC/datacount
+    print("Average PINC Score : ", PINCscore)
 
 
 if __name__ == '__main__':
 
     # Create the parser
-    parser = argparse.ArgumentParser(description='path to jsonL file, output source and output target')
+    parser = argparse.ArgumentParser(
+        description='path to source and target files')
 
     # Add the arguments
     parser.add_argument('--s',
                         metavar='s',
                         type=str,
                         help='the path to the source file')
-    
+
     parser.add_argument('--p',
                         metavar='p',
                         type=str,
@@ -84,10 +92,10 @@ if __name__ == '__main__':
     source_path = args.s
     prediction_path = args.p
 
-    sourcefile = open(source_path,encoding='utf-8')
-    predictionfile = open(prediction_path,encoding='utf-8')
-    
-    calculateScore()
+    sourcefile = open(source_path, encoding='utf-8')
+    predictionfile = open(prediction_path, encoding='utf-8')
+
+    calculateScore(sourcefile, predictionfile)
 
     # closing all the files
     sourcefile.close()

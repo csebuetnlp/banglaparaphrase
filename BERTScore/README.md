@@ -4,13 +4,13 @@ Install requirements.
 pip install git+https://github.com/csebuetnlp/normalizer
 pip install jsonlines
 ```
-Install BERScore
+Install BERTScore
 ```
 git clone https://github.com/Tiiiger/bert_score
 cd bert_score
 pip install .
 ```
-To use BanglaBERT encoding, replace the `bert_score/bert_score/score.py` and `bert_score/bert_score/utils.py` files with our corresponding provided filed.
+To use BanglaBERT encoding, replace the `bert_score/bert_score/score.py` and `bert_score/bert_score/utils.py` files with our corresponding provided files.
 ### Generate the log file
 Generate the log file by running the following command.
 ```
