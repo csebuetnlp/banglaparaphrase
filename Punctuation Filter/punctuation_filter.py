@@ -2,20 +2,20 @@ import argparse
 symbols = ''',;:?!'."-[]{}()–—―~'''
 
 
-
 # Create the parser
-parser = argparse.ArgumentParser(description='path to the source and target file')
+parser = argparse.ArgumentParser(
+    description='path to the source and target file')
 
 # Add the arguments
 parser.add_argument('--s',
-                        metavar='s',
-                        type=str,
-                        help='the path to the source file')
-    
+                    metavar='s',
+                    type=str,
+                    help='the path to the source file')
+
 parser.add_argument('--t',
-                        metavar='t',
-                        type=str,
-                        help='the path to the target file')
+                    metavar='t',
+                    type=str,
+                    help='the path to the target file')
 
 
 args = parser.parse_args()
@@ -102,10 +102,6 @@ for index, line in enumerate(zip(source_file.readlines(), target_file.readlines(
         # check if -2 pos has !?| or not
         if trg[-2] == '?' or trg[-2] == "!" or trg[-2] == "।":
 
-            print(src)
-            print(trg)
-            print()
-
             final_source.write(src+'\n')
             final_target.write(trg[:-1]+'\n')
 
@@ -114,13 +110,9 @@ for index, line in enumerate(zip(source_file.readlines(), target_file.readlines(
         # check if -2 pos has !?| or not
         if trg[-2] == '?' or trg[-2] == "!" or trg[-2] == "।":
 
-            print(src)
-            print(trg)
-            print()
-
             final_source.write(src+'\n')
             final_target.write(trg[:-1]+'\n')
 
     elif (src[-1] == "।" or src[-1] == "!" or src[-1] == "?") and (trg[-1] == "।" or trg[-1] == "!" or trg[-1] == "?"):
-            final_source.write(src+'\n')
-            final_target.write(trg+'\n')
+        final_source.write(src+'\n')
+        final_target.write(trg+'\n')
