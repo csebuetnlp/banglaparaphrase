@@ -42,7 +42,6 @@ def filter_dataset():
         trgts = {}
 
         for key, values in line.items():
-            # print('key: ',key)
             original_key = key
             key = stem_string(key)
             stemmed_values = [stem_string(value) for value in values]
@@ -85,18 +84,18 @@ if __name__ == '__main__':
 
     # Create the parser
     parser = argparse.ArgumentParser(
-        description='path to jsonL file, output source and output target')
+        description='path to the input and output file')
 
     # Add the arguments
     parser.add_argument('--l',
                         metavar='l',
                         type=str,
-                        help='the path to the jsonl file')
+                        help='the path to the jsonl file with sources and corresponding predictions')
 
     parser.add_argument('--t',
                         metavar='t',
                         type=str,
-                        help='the path to the generated target file')
+                        help='the path to the generated target jsonl file')
 
     # Execute the parse_args() method
     args = parser.parse_args()
