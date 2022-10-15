@@ -12,13 +12,13 @@ pip install .
 ```
 To use BanglaBERT encoding, replace the `bert_score/bert_score/score.py` and `bert_score/bert_score/utils.py` files with our corresponding provided files.
 ### Generate the log file
-Generate the log file by running the following command.
+Place the `logBERT.py` inside the `bert_score/bert_score/` folder. Then generate the log file by running the following command from `bert_score/bert_score/` folder.
 ```
 python logBERT.py --l <source> --t <target>
 ```
 where `source` is the path to the jsonl file containing sentences and their corresponding paraphrases as key value pairs and `target` is the generated log file.
 ### Calculate BERTScore
-To calculate bert score run the following command.
+To calculate bert score place the `testBertScore.py` inside the `bert_score/bert_score/` folder. Then generate the log file by running the following command from `bert_score/bert_score/` folder.
 ```
 python testBertScore.py --s <source> --p <prediction>
 ```
