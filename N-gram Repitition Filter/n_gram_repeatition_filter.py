@@ -77,9 +77,8 @@ if __name__ == '__main__':
 source_file = open(source_path, encoding='utf-8')
 target_file = open(target_path, encoding='utf-8')
 
-final_target = open('./ngram_filtered_source.bn', 'w', encoding='utf-8')
-final_source = open('./ngram_filtered_target.bn', 'w', encoding='utf-8')
-output_file = open('./final_output.bn', 'w', encoding='utf-8')
+final_target = open('ngram_filtered_source.bn', 'w', encoding='utf-8')
+final_source = open('ngram_filtered_target.bn', 'w', encoding='utf-8')
 
 target_lines = target_file.readlines()
 source = source_file.readlines()
@@ -92,10 +91,7 @@ for line_index, line in enumerate(target_lines):
         print(line_index + 1)
 
     if output != '':
-        output_file.write(line + output + '\n' + str(line_index+1)+'\n\n')
         counter += 1
     else:
         final_target.write(line)
         final_source.write(source[line_index])
-
-    output_file.write('\n' + 'Total repeating sentence: ' + str(counter))

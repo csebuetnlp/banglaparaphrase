@@ -11,7 +11,6 @@ done
 git clone https://github.com/banglakit/bengali-stemmer.git
 cp PINCScore/filterPINC.py bengali-stemmer/
 python bengali-stemmer/filterPINC.py --l $input --t "PINC-filtered.jsonl" --p $pinc_threshold
-rm -r bengali-stemmer
 pip install git+https://github.com/csebuetnlp/normalizer
 git clone https://github.com/Tiiiger/bert_score
 cd bert_score
@@ -26,3 +25,9 @@ python "../BERTScore/filterBanglaBert.py" --j "BERTlog.jsonl" --s "../source.bn"
 rm "BERTlog.jsonl"
 cd ..
 rm -r bert_score
+cp "N-gram Repitition Filter/n_gram_repeatition_filter.py" bengali-stemmer/
+python bengali-stemmer/n_gram_repeatition_filter.py --s source.bn --t target.bn
+python "Punctuation Filter/punctuation_filter.py" --s ngram_filtered_source.bn --t ngram_filtered_target.bn
+rm -r bengali-stemmer
+rm ngram_filtered_source.bn
+rm ngram_filtered_target.bn

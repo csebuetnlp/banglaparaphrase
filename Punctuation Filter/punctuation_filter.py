@@ -29,8 +29,8 @@ target_file = open(
     target_path, encoding='utf-8')
 
 
-final_source = open('./final_source.bn', 'w', encoding='utf-8')
-final_target = open('./final_target.bn', 'w', encoding='utf-8')
+final_source = open('./source.bn', 'w', encoding='utf-8')
+final_target = open('./target.bn', 'w', encoding='utf-8')
 
 
 counter = 0
