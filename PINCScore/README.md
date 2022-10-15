@@ -1,6 +1,8 @@
+### Requirements
+To run the scripts, they should be placed inside this project [bengali-stemmer](https://github.com/banglakit/bengali-stemmer).
 ### Calculate PINCScore
 
-To calculate PINCScore between source and generated paraphrases run the following command from this directory.
+To calculate PINCScore between source and generated paraphrases run the following command from the mentioned project directory.
 
 ```
 python PINCscore.py --s <source> --p <prediction>
@@ -10,7 +12,7 @@ where `source` and `prediction` are respectively the paths to the files containi
 
 ### Filter with PINCScore
 
-To filer with PINCScore run the following command from this directory.
+To filer with PINCScore run the following command from the mentioned project directory.
 
 ```
 python filterPINC.py --l <source> --t <target> --p <pinc_score>
