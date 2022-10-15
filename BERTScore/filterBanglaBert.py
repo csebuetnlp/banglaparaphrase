@@ -13,7 +13,7 @@ if __name__ == '__main__':
 
     # Add the arguments
     parser.add_argument('--j',
-                        metavar='jl',
+                        metavar='j',
                         type=str,
                         help='the path to the jsonl log file')
 
@@ -69,8 +69,8 @@ if __name__ == '__main__':
                     maxbangla = value[1]
 
         if(maxbangla >= threshold1 and maxbangla < threshold2):
-            sourcebuffer += srcbangla
-            targetbuffer += trgtbangla
+            sourcebuffer += srcbangla + "\n"
+            targetbuffer += trgtbangla + "\n"
             banglabertfilteredcount += 1
             if(banglabertfilteredcount == 50000):
                 sourcefile.write("%s" % sourcebuffer)
