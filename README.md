@@ -1,4 +1,39 @@
-### Filtering Scheme
+# BanglaParaphrase
+
+This repository contains the code, data, and models of the paper titled [**"BanglaParaphrase: A High-Quality Bangla Paraphrase Dataset"**](https://arxiv.org/abs/2210.05109).
+
+## Table of Contents
+
+- [BanglaParaphrase](#banglaParaphrase)
+  - [Table of Contents](#table-of-contents)
+  - [Datasets](#datasets)
+  - [Filtering Pipeline](#filtering-pipeline)
+  - [Training & Evaluation](#training--evaluation)
+  - [Models](#models)
+  - [License](#license)
+  - [Citation](#citation)
+  
+## Datasets
+  
+***Disclaimer: You must agree to the [license](#license) and terms of use before using the dataset.***
+
+The dataset files are organized in `.jsonl` format  i.e. one JSON per line. **Download the dataset from [here](https://huggingface.co/datasets/csebuetnlp/BanglaParaphrase/tree/main).**
+
+One example from the `train` part of the dataset is given below in JSON format. 
+```
+{
+"source": "বেশিরভাগ সময় প্রকৃতির দয়ার ওপরেই বেঁচে থাকতেন উপজাতিরা।", 
+"target": "বেশিরভাগ সময়ই উপজাতিরা প্রকৃতির দয়ার উপর নির্ভরশীল ছিল।"
+}
+  ```
+
+### Data Splits
+Dataset  with  train-dev-test  example  counts  are  given  below:
+Language       | ISO  639-1  Code | Train | Validation | Test |
+-------------- | ---------------- | ------- | ----- | ------ |
+Bengali | bn | 419, 967 | 233, 31 | 233, 32 |
+
+## Filtering Pipeline
 ![filter_pipeline](images/filter_sequence.png)
 
 | Filter Name | Significance | Filtering Parameters |
@@ -18,3 +53,20 @@ bash filter.sh -i <input> -p <pinc_threshold> -l <lower_bert_score_threshold> -h
 Where `input` is the path to the jsonl file containing sentences and their corresponding paraphrases as key value pairs, `pinc_threshold` is the threshold for PINCScore, `lower_bert_score_threshold` and `higher_bert_score_threshold` are the limits for BERTScore in scale of 0 to 1.
 
 This will generate two files named `source.bn` and `target.bn` in the working directory containing the filtered pairs after passing through all the filtering steps.
+
+## Training & Evaluation
+For training and evaluation, please refer to the repository of [BanglaNLG](https://github.com/csebuetnlp/BanglaNLG).
+  
+## Models
+
+The model checkpoint from the paper is available at [huggingface model hub](https://huggingface.co/csebuetnlp/banglat5_banglaparaphrase).
+
+
+## License
+Contents of this repository are restricted to only non-commercial research purposes under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/). Copyright of the dataset contents belongs to the original copyright holders.
+
+
+## Citation
+
+### Filtering Scheme
+
