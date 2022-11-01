@@ -19,11 +19,11 @@ This repository contains the code, data, and models of the paper titled [**"Bang
 
 The dataset files are organized in `.jsonl` format  i.e. one JSON per line. **Download the dataset from [here](https://huggingface.co/datasets/csebuetnlp/BanglaParaphrase/tree/main).**
 
-One example from the `train` part of the dataset is given below in JSON format. 
+One example from the `test` part of the dataset is given below in JSON format. 
 ```
 {
-"source": "বেশিরভাগ সময় প্রকৃতির দয়ার ওপরেই বেঁচে থাকতেন উপজাতিরা।", 
-"target": "বেশিরভাগ সময়ই উপজাতিরা প্রকৃতির দয়ার উপর নির্ভরশীল ছিল।"
+"source": "খোঁজ খবর রাখতেন বিজ্ঞানের অগ্রগতি নিয়ে।", 
+"target": "বিজ্ঞানের অগ্রগতির দিকে তিনি নজর রেখেছিলেন।"
 }
   ```
 
