@@ -34,6 +34,7 @@ Language       | ISO  639-1  Code | Train | Validation | Test |
 Bengali | bn | 419, 967 | 233, 31 | 233, 32 |
 
 ## Filtering Pipeline
+The following filtering pipeline was used to preprocess the raw dataset to ensure high quality.
 ![filter_pipeline](images/filter_sequence.png)
 
 | Filter Name | Significance | Filtering Parameters |
