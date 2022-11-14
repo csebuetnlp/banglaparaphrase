@@ -1,6 +1,6 @@
 # BanglaParaphrase
 
-This repository contains the code, data, and models of the paper titled [**"BanglaParaphrase: A High-Quality Bangla Paraphrase Dataset"**](https://arxiv.org/abs/2210.05109).
+This repository contains the code, data, and associated models of the paper titled [**"BanglaParaphrase: A High-Quality Bangla Paraphrase Dataset"**](https://arxiv.org/abs/2210.05109), accepted in *Proceedings of the Asia-Pacific Chapter of the Association for Computational Linguistics: AACL 2022*.
 
 ## Table of Contents
 
@@ -22,8 +22,8 @@ The dataset files are organized in `.jsonl` format  i.e. one JSON per line. **Do
 One example from the `test` part of the dataset is given below in JSON format. 
 ```
 {
-"source": "খোঁজ খবর রাখতেন বিজ্ঞানের অগ্রগতি নিয়ে।", 
-"target": "বিজ্ঞানের অগ্রগতির দিকে তিনি নজর রেখেছিলেন।"
+  "source": "খোঁজ খবর রাখতেন বিজ্ঞানের অগ্রগতি নিয়ে।", 
+  "target": "বিজ্ঞানের অগ্রগতির দিকে তিনি নজর রেখেছিলেন।"
 }
   ```
 
@@ -68,6 +68,11 @@ Contents of this repository are restricted to only non-commercial research purpo
 
 
 ## Citation
-
-### Filtering Scheme
-
+```
+@article{akil2022banglaparaphrase,
+  title={BanglaParaphrase: A High-Quality Bangla Paraphrase Dataset},
+  author={Akil, Ajwad and Sultana, Najrin and Bhattacharjee, Abhik and Shahriyar, Rifat},
+  journal={arXiv preprint arXiv:2210.05109},
+  year={2022}
+}
+```
